@@ -1,0 +1,5 @@
+.env
+scraper/scraper
+scraper/.env
+api/.env
+api/api

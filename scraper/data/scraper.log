@@ -1,0 +1,5 @@
+2025/11/17 10:15:36 INFO Downloading browsers...
+2025/11/17 10:15:36 INFO Downloaded browsers successfully
+2025/11/17 10:17:05 Could not goto page for ripple: Frame.Goto https://coinmarketcap.com/currencies/ripple/historical-data/?start=20241117&end=20251117: playwright: timeout: Timeout 45000ms exceeded.
+2025/11/17 10:17:36 No table rows found for avalanche-2012
+2025/11/17 10:20:21 No table rows found for leo-token
