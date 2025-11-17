@@ -563,8 +563,6 @@ Parameters:
 Training Time: ~60 seconds
 ```
 
-![Gradient Boosting Training](./docs/gradBoostSummary.png)
-*Figure 6: Example output from Gradient Boosting model training showing performance metrics*
 
 ---
 
