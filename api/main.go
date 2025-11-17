@@ -21,8 +21,8 @@ var (
 	CMC_API_KEY       = os.Getenv("CMC_API_KEY")       // Required - get from https://coinmarketcap.com/api/
 
 	// File paths
-	CG_CSV_PATH  = "./data/cg_data.csv"
-	CMC_CSV_PATH = "./data/cmc_data.csv"
+	CG_CSV_PATH  = "./data/cg_data_02.csv"
+	CMC_CSV_PATH = "./data/cmc_data_02.csv"
 	LOG_PATH     = "./data/api_scraper.log"
 
 	// Tokens to track (CoinGecko IDs)
@@ -45,6 +45,32 @@ var (
 	// Run mode: set to true to only collect current snapshots (for repeated runs)
 	SKIP_HISTORICAL = false // Set to true after first run
 )
+
+var TOKEN_METADATA = map[string]struct {
+	Symbol string
+	Name   string
+}{
+	"bitcoin":            {"btc", "Bitcoin"},
+	"ethereum":           {"eth", "Ethereum"},
+	"solana":             {"sol", "Solana"},
+	"cardano":            {"ada", "Cardano"},
+	"ripple":             {"xrp", "XRP"},
+	"polkadot":           {"dot", "Polkadot"},
+	"dogecoin":           {"doge", "Dogecoin"},
+	"avalanche-2":        {"avax", "Avalanche"},
+	"chainlink":          {"link", "Chainlink"},
+	"polygon":            {"matic", "Polygon"},
+	"uniswap":            {"uni", "Uniswap"},
+	"litecoin":           {"ltc", "Litecoin"},
+	"stellar":            {"xlm", "Stellar"},
+	"cosmos":             {"atom", "Cosmos"},
+	"monero":             {"xmr", "Monero"},
+	"tron":               {"trx", "TRON"},
+	"ethereum-classic":   {"etc", "Ethereum Classic"},
+	"filecoin":           {"fil", "Filecoin"},
+	"hedera-hashgraph":   {"hbar", "Hedera"},
+	"aptos":              {"apt", "Aptos"},
+}
 
 // ===== DATA STRUCTURES =====
 type CoinGeckoHistoricalResponse struct {
@@ -141,7 +167,6 @@ func main() {
 	fmt.Printf("⏱️  Rate limits: CG=%ds, CMC=%ds\n\n", int(CG_DELAY.Seconds()), int(CMC_DELAY.Seconds()))
 
 	// Check API keys
-	CMC_API_KEY = os.Getenv("CMC_API_KEY");
 	if CMC_API_KEY == "" {
 		fmt.Println("⚠️  WARNING: CMC_API_KEY not set. Set it as environment variable:")
 		fmt.Println("   export CMC_API_KEY='your-api-key-here'")
